@@ -301,16 +301,19 @@ void printInput(int start)
 {
 	int end = vga_index;
 	next_line();
-	for(;start<end;start++)
+	while(end>=start)
 	{
 		terminal_buffer[vga_index]=terminal_buffer[start];
+		vga_index++;
+		start++;
 	}
 }
 
 
 void test_input(void)
 {
-	int start = vga_index;
+	int start = 0;
+	start = vga_index;
 	char ch = 0;
 	char keycode = 0;
 	do
@@ -364,7 +367,7 @@ void main(void)
 	next_line();
 	print_string("welcome to Jackernel V 1.0",GREEN);
 	next_line();
-	print_string("User>$ ",WHITE_COLOR);
+//	print_string("User>$ ",WHITE_COLOR);
 	test_input();
 	next_line();
 	print_string("test kernel end",RED);
